@@ -1,0 +1,39 @@
+list case
+
+- user JOIN vid group without JOIN base group 
+[ execute set joinVidGroup message and timeout ]
+
+- user LEFT vid group without JOIN base group
+[ execute clear joinVidGroup message and timeout, execute leftBaseGroup message and timeout ]
+
+- user JOIN base group when already JOIN vid group 
+[ execute clear joinVidGroup message and timeout, execute leftBaseGroup message and timeout ]
+
+- user LEFT base group when already JOIN vid group 
+[ execute set leftBaseGroup message and timeout ]
+
+------------------------------------------------------------------------
+
+- user join vid group without join base group 
+[ execute joinVidGroup message and timeout ]
+
+- user join vid group when already join base group 
+[ do nothing ]
+
+- user left vid group without join base group
+[ execute clear joinVidGroup message and timeout, execute leftBaseGroup message and timeout ]
+
+- user left vid group when already join base group 
+[ do nothing ]
+
+- user join base group without join vid group 
+[ do nothing ]
+
+- user join base group when already join vid group 
+[ execute clear joinVidGroup message and timeout, execute leftBaseGroup message and timeout ]
+
+- user left base group without join vid group 
+[ do nothing ]
+
+- user left base group when already join vid group 
+[ execute leftBaseGroup message and timeout ]
