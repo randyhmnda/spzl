@@ -1,17 +1,7 @@
+import { Context, NarrowedContext, Telegraf } from "telegraf";
 import TaskManager from "./taskManager.js";
+import { Update, Message } from "telegraf/typings/core/types/typegram.js";
 
-export interface ICDNSyndicationResponse {
-  mediaDetails: {
-    type?: "video";
-    video_info: {
-      variants: {
-        bitrate: number;
-        content_type: "video/mp4" | "application/x-mpegURL";
-        url: string;
-      }[];
-    };
-  }[];
-}
 export interface ITask {
   [userId: number]:
     | {
@@ -38,3 +28,21 @@ export type IBotConfig = {
   baseGroupId: string;
   taskManager: TaskManager;
 }[];
+
+export interface GlobalSateApp {
+  name: string;
+  bot: Telegraf;
+  vidGroupId: string;
+  baseGroupId: string;
+  taskManager: TaskManager;
+}
+
+export type CommandContext = NarrowedContext<
+  Context<Update>,
+  {
+    message: Update.New & Update.NonChannel & Message.TextMessage;
+    update_id: number;
+  }
+>;
+
+export type ChatMemberContext = NarrowedContext<Context<Update>, Update.ChatMemberUpdate>;
